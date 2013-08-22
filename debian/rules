@@ -26,7 +26,8 @@ override_dh_auto_install:
 	python setup.py install --root=$(CURDIR)/debian/lavapdu/ --install-layout=deb
 	$(XP) $(DB2MAN) debian/manpage.xml
 	dh_installman lavapdu.8
-	mv debian/lavapdu/etc/init.d/lavapdu.init debian/lavapdu.init
+	mv debian/lavapdu/etc/init.d/lava-pdu-listener.init debian/lava-pdu-listener.init
+	mv debian/lavapdu/etc/init.d/lava-pdu-runner.init debian/lava-pdu-runner.init
 
 override_dh_auto_clean:
 	dh_auto_clean
