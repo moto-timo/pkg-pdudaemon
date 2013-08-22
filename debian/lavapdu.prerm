@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+if [ -x "/etc/init.d/lavapdu-listener" ]; then
+	invoke-rc.d lavapdu-listener stop || exit $?
+fi
+
+if [ -x "/etc/init.d/lavapdu-runner" ]; then
+	invoke-rc.d lavapdu-runner stop || exit $?
+fi
+
+#DEBHELPER#
+
