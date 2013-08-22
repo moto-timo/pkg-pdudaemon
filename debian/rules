@@ -28,8 +28,8 @@ override_dh_auto_install:
 	$(XP) $(DB2MAN) debian/lavapdu-runner.xml
 	dh_installman lavapdu-listener.8
 	dh_installman lavapdu-runner.8
-	mv debian/lavapdu/etc/init.d/lava-pdu-listener.init debian/lava-pdu.listener.init
-	mv debian/lavapdu/etc/init.d/lava-pdu-runner.init debian/lava-pdu.runner.init
+	mv debian/lavapdu/etc/init.d/lavapdu-listener.init debian/lavapdu.listener.init
+	mv debian/lavapdu/etc/init.d/lavapdu-runner.init debian/lavapdu.runner.init
 	dh_installinit --name listener
 	dh_installinit --name runner
 
