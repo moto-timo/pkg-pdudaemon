@@ -1,0 +1,2 @@
+etc/lava-pdu-listener.init ./etc/init.d/
+etc/lava-pdu-runner.init ./etc/init.d/
