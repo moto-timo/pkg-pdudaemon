@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-if [ -x "/etc/init.d/lavapdu-listener" ]; then
+if [ -x "/etc/init.d/lavapdu-listener.init" ]; then
 	invoke-rc.d lavapdu-listener stop || exit $?
 fi
 
-if [ -x "/etc/init.d/lavapdu-runner" ]; then
+if [ -x "/etc/init.d/lavapdu-runner.init" ]; then
 	invoke-rc.d lavapdu-runner stop || exit $?
 fi
 
