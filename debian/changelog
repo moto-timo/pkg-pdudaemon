@@ -1,6 +1,7 @@
 lavapdu (0.0.1-2) unstable; urgency=medium
 
   * Rename lavapdu-listener to lavapdu-listen
+  * Update copyright file
 
  -- Neil Williams <codehelp@debian.org>  Thu, 12 Dec 2013 11:34:25 +0000
 
