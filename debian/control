@@ -1,18 +1,28 @@
 Source: lavapdu
 Section: net
 Priority: optional
-Maintainer: Matthew Hart <matthew.hart@linaro.org>
+Maintainer: Debian LAVA team <pkg-linaro-lava-devel@lists.alioth.debian.org>
+Uploaders: Matthew Hart <matthew.hart@linaro.org>,
+ Antonio Terceiro <terceiro@debian.org>,
+ Neil Williams <codehelp@debian.org>,
+ Fathi Boudra <fabo@debian.org>, Jordi Mallach <jordi@debian.org>
 Build-Depends: debhelper (>= 8.0.0),
  python | python-all | python-dev | python-all-dev,
  python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
 Standards-Version: 3.9.4
 Homepage: http://www.linaro.org/engineering/engineering-groups/validation
-#Vcs-Git: git://git.debian.org/collab-maint/lavapdu.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/lavapdu.git;a=summary
+Vcs-Git: https://alioth.debian.org/anonscm/git/pkg-linaro-lava/lavapdu.git
+Vcs-Browser: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-linaro-lava/lavapdu.git;a=summary
 
 Package: lavapdu
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: LAVA PDU control daemon
+ LAVA supports a number of APC power distribution
+ units which allow control over the power supply
+ to individual devices.
+ .
+ lavapdu provides a client which LAVA can use to
+ ensure that devices get a hard reboot if a soft
+ reboot fails. 

@@ -1,5 +1,9 @@
 lavapdu (0.0.1-1) unstable; urgency=low
 
+  [ Matthew Hart ]
   * Initial packaging for Linaro PPA.
+
+  [ Neil Williams ]
+  * Migrate packaging to alioth
 
  -- Matthew Hart <matthew.hart@linaro.org>  Thu, 22 Aug 2013 10:41:45 +0100
