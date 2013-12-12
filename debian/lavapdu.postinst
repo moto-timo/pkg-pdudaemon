@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-if [ -x "/etc/init.d/lavapdu-listener.init" ]; then
-	update-rc.d lavapdu-listener defaults >/dev/null
-	invoke-rc.d lavapdu-listener start || exit $?
+if [ -x "/etc/init.d/lavapdu-listen.init" ]; then
+	update-rc.d lavapdu-listen defaults >/dev/null
+	invoke-rc.d lavapdu-listen start || exit $?
 fi
 
 if [ -x "/etc/init.d/lavapdu-runner.init" ]; then

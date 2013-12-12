@@ -1,3 +1,9 @@
+lavapdu (0.0.1-2) unstable; urgency=medium
+
+  * Rename lavapdu-listener to lavapdu-listen
+
+ -- Neil Williams <codehelp@debian.org>  Thu, 12 Dec 2013 11:34:25 +0000
+
 lavapdu (0.0.1-1) unstable; urgency=low
 
   [ Matthew Hart ]

@@ -24,17 +24,17 @@ export DH_OPTIONS
 override_dh_auto_install:
 	dh_auto_install
 	python setup.py install --root=$(CURDIR)/debian/lavapdu/ --install-layout=deb
-	$(XP) $(DB2MAN) debian/lavapdu-listener.xml
+	$(XP) $(DB2MAN) debian/lavapdu-listen.xml
 	$(XP) $(DB2MAN) debian/lavapdu-runner.xml
-	dh_installman lavapdu-listener.8
+	dh_installman lavapdu-listen.8
 	dh_installman lavapdu-runner.8
-	mv debian/lavapdu/etc/init.d/lavapdu-listener.init debian/lavapdu/etc/init.d/lavapdu-listener
+	mv debian/lavapdu/etc/init.d/lavapdu-listen.init debian/lavapdu/etc/init.d/lavapdu-listen
 	mv debian/lavapdu/etc/init.d/lavapdu-runner.init debian/lavapdu/etc/init.d/lavapdu-runner
 
 override_dh_auto_clean:
 	dh_auto_clean
 	find . -name '*.pyc' -delete
-	$(RM) -r lavapdu.egg-info setup.cfg dist/ lavapdu-listener.8 lavapdu-runner.8
+	$(RM) -r lavapdu.egg-info setup.cfg dist/ lavapdu-listen.8 lavapdu-runner.8
 	$(RM) -r build/
 
 # get upstream version for get-orig-source target
