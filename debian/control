@@ -17,7 +17,8 @@ Vcs-Browser: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-l
 
 Package: lavapdu
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}
+Depends: ${python:Depends}, ${misc:Depends},
+ postgresql-client-common
 Description: LAVA PDU control daemon
  LAVA supports a number of APC power distribution
  units which allow control over the power supply
@@ -25,4 +26,5 @@ Description: LAVA PDU control daemon
  .
  lavapdu provides a client which LAVA can use to
  ensure that devices get a hard reboot if a soft
- reboot fails. 
+ reboot fails. Operations are recorded in a postgres
+ database for the runner daemon to process.
