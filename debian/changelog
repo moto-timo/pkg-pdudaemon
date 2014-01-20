@@ -1,3 +1,9 @@
+lavapdu (0.0.2-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Neil Williams <codehelp@debian.org>  Mon, 20 Jan 2014 10:22:20 +0000
+
 lavapdu (0.0.1-2) unstable; urgency=medium
 
   * Rename lavapdu-listener to lavapdu-listen
