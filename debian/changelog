@@ -1,3 +1,10 @@
+lavapdu (0.0.2-2) unstable; urgency=medium
+
+  * Split out the pduclient script to allow a single daemon to be
+    controlled from multiple devices.
+
+ -- Neil Williams <codehelp@debian.org>  Sun, 16 Mar 2014 14:16:33 +0000
+
 lavapdu (0.0.2-1) unstable; urgency=medium
 
   * New upstream release

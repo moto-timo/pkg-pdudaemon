@@ -15,16 +15,24 @@ Homepage: http://www.linaro.org/engineering/engineering-groups/validation
 Vcs-Git: https://alioth.debian.org/anonscm/git/pkg-linaro-lava/lavapdu.git
 Vcs-Browser: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-linaro-lava/lavapdu.git;a=summary
 
-Package: lavapdu
+Package: lavapdu-daemon
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends},
  postgresql-client-common
 Description: LAVA PDU control daemon
  LAVA supports a number of APC power distribution
  units which allow control over the power supply
- to individual devices.
+ to individual devices. Operations are recorded in a
+ postgres database for the runner daemon to process.
  .
- lavapdu provides a client which LAVA can use to
+ This package contains the daemons to control
+ the PDU.
+
+Package: lavapdu-client
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+Description: LAVA PDU client
+ This package provides a client which LAVA can use to
  ensure that devices get a hard reboot if a soft
- reboot fails. Operations are recorded in a postgres
- database for the runner daemon to process.
+ reboot fails. The client connects to the listen
+ daemon on the host running lavapdu-daemon.
