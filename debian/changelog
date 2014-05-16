@@ -1,3 +1,10 @@
+lavapdu (0.0.3-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #747353: ITP: lavapdu -- LAVA PDU client
+    and daemon)
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 07 May 2014 20:03:41 +0100
+
 lavapdu (0.0.2-2) unstable; urgency=medium
 
   * Split out the pduclient script to allow a single daemon to be

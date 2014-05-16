@@ -11,9 +11,9 @@ Build-Depends: debhelper (>= 8.0.0),
  python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
 Standards-Version: 3.9.5
-Homepage: http://www.linaro.org/engineering/engineering-groups/validation
-Vcs-Git: https://alioth.debian.org/anonscm/git/pkg-linaro-lava/lavapdu.git
-Vcs-Browser: https://alioth.debian.org/plugins/scmgit/cgi-bin/gitweb.cgi?p=pkg-linaro-lava/lavapdu.git;a=summary
+Homepage: http://www.linaro.org/projects/test-validation/
+Vcs-Git: https://github.com/Linaro/pkg-lavapdu.git
+Vcs-Browser: https://github.com/Linaro/pkg-lavapdu
 
 Package: lavapdu-daemon
 Architecture: all
