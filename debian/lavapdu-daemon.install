@@ -1,0 +1,3 @@
+debian/lavapdu/usr/bin/lavapdu-runner ./usr/sbin/
+debian/lavapdu/usr/bin/lavapdu-listen ./usr/sbin/
+./etc/lavapdu.conf ./etc/

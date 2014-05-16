@@ -91,6 +91,37 @@
     a LAVA instance, using <application>lava-dispatcher</application>.
     </para>
   </refsect1>
+  <refsect1 id="reverse">
+    <title>Reverse lookups</title>
+    <para><application>&dhpackage;</application> needs the hostname of
+    the calling machine to match a DNS reverse lookup. This means that
+    not only does <emphasis>hostname -f</emphasis> need to resolve
+    to an IP address but that IP address must resolve to that hostname:
+    </para>
+    <para>
+        <programlisting>
+        $ dig myhostname.domain
+        ...
+        192.168.0.56
+        ...
+        </programlisting>
+        <programlisting>
+        $ dig -x 192.168.0.56
+        ...
+        myhostname.domain
+        ...
+        </programlisting>
+    </para>
+    <para>If the second call does not work, you will need to fix the
+    local DNS resolution before <application>&dhpackage;</application>
+    will operate. Error messages will look something like:
+    </para>
+    <para>
+        <programlisting>
+            Unknown error sending command! control replied: nack
+        </programlisting>
+    </para>
+  </refsect1>
   <refsect1 id="options">
     <title>OPTIONS</title>
     <variablelist>

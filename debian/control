@@ -19,20 +19,31 @@ Package: lavapdu-daemon
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends},
  postgresql-client-common
+Conflicts: lavapdu
+Replaces: lavapdu
+Provides: lavapdu
 Description: LAVA PDU control daemon
- LAVA supports a number of APC power distribution
- units which allow control over the power supply
+ The Linaro Automated Validation Architecture (LAVA)
+ PDU daemon supports a number of APC power distribution
+ units which allow control over the power supplied
  to individual devices. Operations are recorded in a
  postgres database for the runner daemon to process.
  .
  This package contains the daemons to control
- the PDU.
+ the PDU. One daemon can manage multiple PDUs.
 
 Package: lavapdu-client
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}
+Conflicts: lavapdu
+Replaces: lavapdu
+Provides: lavapdu
 Description: LAVA PDU client
- This package provides a client which LAVA can use to
- ensure that devices get a hard reboot if a soft
- reboot fails. The client connects to the listen
- daemon on the host running lavapdu-daemon.
+ The Linaro Automated Validation Architecture (LAVA)
+ can use the pduclient to control the power supply
+ to devices under test.
+ .
+ This package contains the pduclient to ensure
+ that devices get a hard reboot. The client connects
+ to the listen daemon on a local or remote host
+ running lavapdu-daemon.
