@@ -21,7 +21,6 @@ Depends: ${python:Depends}, ${misc:Depends},
  postgresql-client-common
 Conflicts: lavapdu
 Replaces: lavapdu
-Provides: lavapdu
 Description: LAVA PDU control daemon
  The Linaro Automated Validation Architecture (LAVA)
  PDU daemon supports a number of APC power distribution
@@ -37,7 +36,6 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}
 Conflicts: lavapdu
 Replaces: lavapdu
-Provides: lavapdu
 Description: LAVA PDU client
  The Linaro Automated Validation Architecture (LAVA)
  can use the pduclient to control the power supply
