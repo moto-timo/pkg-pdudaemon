@@ -1,3 +1,10 @@
+lavapdu (0.0.3-2) unstable; urgency=medium
+
+  * Apply upstream fix to init scripts to ensure
+    daemon starts after postgresql. (Closes: #754788)
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 29 Jul 2014 21:02:35 +0100
+
 lavapdu (0.0.3-1) unstable; urgency=medium
 
   * Initial release. (Closes: #747353: ITP: lavapdu -- LAVA PDU client

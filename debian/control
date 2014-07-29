@@ -18,7 +18,7 @@ Vcs-Browser: https://github.com/Linaro/pkg-lavapdu
 Package: lavapdu-daemon
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends},
- postgresql-client-common
+ postgresql, postgresql-client
 Conflicts: lavapdu
 Replaces: lavapdu
 Description: LAVA PDU control daemon
