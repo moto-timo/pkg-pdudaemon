@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 8.0.0),
  python | python-all | python-dev | python-all-dev,
  python-setuptools, docbook-xsl, xsltproc
 X-Python-Version: 2.7
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://www.linaro.org/projects/test-validation/
 Vcs-Git: https://github.com/Linaro/pkg-lavapdu.git
 Vcs-Browser: https://github.com/Linaro/pkg-lavapdu
@@ -18,7 +18,7 @@ Vcs-Browser: https://github.com/Linaro/pkg-lavapdu
 Package: lavapdu-daemon
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends},
- postgresql, postgresql-client
+ postgresql, postgresql-client, telnet
 Conflicts: lavapdu
 Replaces: lavapdu
 Description: LAVA PDU control daemon

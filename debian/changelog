@@ -1,3 +1,10 @@
+lavapdu (0.0.3-3) unstable; urgency=low
+
+  * Add telnet as a dependency of lavapdu-daemon
+  * Update standards version, no changes
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 08 Oct 2014 15:48:12 +0100
+
 lavapdu (0.0.3-2) unstable; urgency=medium
 
   * Apply upstream fix to init scripts to ensure
