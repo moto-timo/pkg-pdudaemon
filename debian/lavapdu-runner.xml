@@ -112,7 +112,7 @@
     <title>FILES</title>
     <variablelist>
       <varlistentry>
-        <term><filename>/etc/lavapdu.conf</filename></term>
+        <term><filename>/etc/lavapdu/lavapdu.conf</filename></term>
         <listitem>
           <para>The system-wide configuration file to control the
             behaviour of <application>&dhpackage;</application>.

@@ -1,3 +1,9 @@
+lavapdu (0.0.4-1) UNRELEASED; urgency=medium
+
+  * new upstream release
+
+ -- Matt Hart <matt@blacklabsystems.com>  Thu, 26 Feb 2015 11:22:01 +0000
+
 lavapdu (0.0.3-3) unstable; urgency=low
 
   * Add telnet as a dependency of lavapdu-daemon
