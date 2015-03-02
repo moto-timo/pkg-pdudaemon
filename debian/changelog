@@ -1,6 +1,10 @@
 lavapdu (0.0.4-1) UNRELEASED; urgency=medium
 
+  [ Matt Hart ]
   * new upstream release
+
+  [ Neil Williams ]
+  * Remove old watch.ex file and add dh-python to build-depends.
 
  -- Matt Hart <matt@blacklabsystems.com>  Thu, 26 Feb 2015 11:22:01 +0000
 
