@@ -1,12 +1,14 @@
-lavapdu (0.0.4-1) UNRELEASED; urgency=medium
+lavapdu (0.0.4-1) experimental; urgency=medium
 
   [ Matt Hart ]
   * new upstream release
 
   [ Neil Williams ]
   * Remove old watch.ex file and add dh-python to build-depends.
+  * Expand manpage for lavapdu-runner to cover upstream changes to the
+    configuration file.
 
- -- Matt Hart <matt@blacklabsystems.com>  Thu, 26 Feb 2015 11:22:01 +0000
+ -- Neil Williams <codehelp@debian.org>  Thu, 19 Mar 2015 10:52:46 +0000
 
 lavapdu (0.0.3-3) unstable; urgency=low
 

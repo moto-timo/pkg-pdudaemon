@@ -72,8 +72,7 @@
   <refsect1 id="description">
     <title>DESCRIPTION</title>
     <para>This manual page documents briefly the
-      <command>&dhpackage;</command> and <command>bar</command>
-      commands.</para>
+      <command>&dhpackage;</command> command.</para>
     <para><command>&dhpackage;</command> is a daemon which reads the
     queue created by lavapdu-listen and executes the commands on the
     specified PDU. The daemon logs in to the PDU, navigates the menu
@@ -117,6 +116,31 @@
           <para>The system-wide configuration file to control the
             behaviour of <application>&dhpackage;</application>.
           </para>
+          <para>With version 0.0.4, <application>&dhpackage;</application>
+          no longer tries to guess the type of interface on the specified
+          PDU as this proved to be unreliable.
+          </para>
+          <para><application>&dhpackage;</application> requires that
+          the driver for your PDU is specified in the 
+          <filename>/etc/lavapdu/lavapdu.conf</filename> file. Examples
+          are given in the default file but you will need to edit this
+          file to specify the PDU address (hostname or IP address) and
+          the driver to use for that PDU.
+          </para>
+          <para>Check the <filename>/var/log/lavapdu-runner.log</filename>
+          logfile to ensure that the driver specified is working with
+          your PDU and restart the lavapdu-runner daemon when changing
+          the configuration file.
+          <emphasis>sudo service lavapdu-runner restart</emphasis>
+          </para>
+          <para>Note that <filename>/etc/lavapdu/lavapdu.conf</filename>
+          is in JSON format, use http://www.jsonlint.com to verify
+          the syntax.</para>
+          <para>Setting the logging level to DEBUG will help you see
+          what the runner is doing - set the level back to INFO once
+          the PDU is working.
+          </para>
+          <para>https://wiki.debian.org/PDUDaemon</para>
         </listitem>
       </varlistentry>
     </variablelist>
