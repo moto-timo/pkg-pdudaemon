@@ -1,3 +1,9 @@
+lavapdu (0.0.4-2~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Neil Williams <codehelp@debian.org>  Fri, 15 May 2015 11:54:29 +0100
+
 lavapdu (0.0.4-2) unstable; urgency=medium
 
   * Migrate into unstable for stretch. Update watch file.
