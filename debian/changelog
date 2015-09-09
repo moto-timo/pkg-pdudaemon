@@ -1,3 +1,9 @@
+lavapdu (0.0.5-2) unstable; urgency=medium
+
+  * Add Senthil Kumaran S (stylesen) as an uploader.
+
+ -- Senthil Kumaran S (stylesen) <stylesen@gmail.com>  Tue, 08 Sep 2015 22:18:03 +0530
+
 lavapdu (0.0.5-1) unstable; urgency=medium
 
   * New upstream release
