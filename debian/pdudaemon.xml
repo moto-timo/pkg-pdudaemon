@@ -5,11 +5,11 @@
   <!ENTITY dhfirstname "Matthew">
   <!ENTITY dhsurname   "Hart">
   <!ENTITY dhusername  "Matthew Hart">
-  <!ENTITY dhemail     "matthew.hart@linaro.org">
+  <!ENTITY dhemail     "matt@mattface.org">
   <!ENTITY dhsection   "8">
-  <!ENTITY dhtitle     "lavapdu-listen User Manual">
+  <!ENTITY dhtitle     "pdudaemon User Manual">
   <!ENTITY dhucpackage "LAVAPDU">
-  <!ENTITY dhpackage   "lavapdu-listen">
+  <!ENTITY dhpackage   "pdudaemon">
 ]>
 
 <refentry>
@@ -109,7 +109,7 @@
     <title>FILES</title>
     <variablelist>
       <varlistentry>
-        <term><filename>/etc/lavapdu/lavapdu.conf</filename></term>
+        <term><filename>/etc/pdudaemon/pdudaemon.conf</filename></term>
         <listitem>
           <para>The system-wide configuration file to control the
             behaviour of <application>&dhpackage;</application>.
@@ -122,9 +122,6 @@
     <title>SEE ALSO</title>
     <!-- In alpabetical order. -->
     <para><citerefentry>
-        <refentrytitle>lavapdu-runner</refentrytitle>
-        <manvolnum>8</manvolnum>
-      </citerefentry>, <citerefentry>
         <refentrytitle>pduclient</refentrytitle>
         <manvolnum>1</manvolnum>
       </citerefentry></para>
