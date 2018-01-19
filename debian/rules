@@ -23,28 +23,25 @@ export DH_OPTIONS
 
 override_dh_auto_install:
 	dh_auto_install
-	python setup.py install --root=$(CURDIR)/debian/lavapdu/ --install-layout=deb
-	$(XP) $(DB2MAN) debian/lavapdu-listen.xml
-	$(XP) $(DB2MAN) debian/lavapdu-runner.xml
+	python setup.py install --root=$(CURDIR)/debian/pdudaemon/ --install-layout=deb
+	$(XP) $(DB2MAN) debian/pdudaemon.xml
 	$(XP) $(DB2MAN) debian/pduclient.xml
-	dh_installman -plavapdu-daemon lavapdu-listen.8
-	dh_installman -plavapdu-daemon lavapdu-runner.8
-	dh_installman -plavapdu-client pduclient.1
-	mv debian/lavapdu/etc/init.d/lavapdu-listen.init debian/lavapdu-daemon/etc/init.d/lavapdu-listen
-	mv debian/lavapdu/etc/init.d/lavapdu-runner.init debian/lavapdu-daemon/etc/init.d/lavapdu-runner
-	mv debian/lavapdu/usr/lib debian/lavapdu-daemon/usr/
-	mv debian/lavapdu/etc/logrotate.d/lavapdulogrotate debian/lavapdu-daemon/etc/logrotate.d/
+	dh_installman -ppdudaemon pdudaemon.8
+	dh_installman -ppdudaemon-client pduclient.1
+	mv debian/pdudaemon/etc/pdudaemon.service debian/pdudeamon/systemd/
+	mv debian/pdudaemon/usr/lib debian/pdudaemon/usr/
+	mv debian/pdudaemon/etc/logrotate.d/pdudaemonlogrotate debian/pdudaemon/etc/logrotate.d/pdudaemon
 
 override_dh_auto_clean:
 	dh_auto_clean
 	find . -name '*.pyc' -delete
-	$(RM) -r lavapdu.egg-info setup.cfg dist/ lavapdu-listen.8 lavapdu-runner.8
-	$(RM) -r build/ pduclient.1 debian/lavapdu
+	$(RM) -r pdudaemon.egg-info setup.cfg dist/ pdudaemon-listen.8 pdudaemon-runner.8
+	$(RM) -r build/ pduclient.1 debian/pdudeamon
 
 # get upstream version for get-orig-source target
 VERSION:= $(shell dpkg-parsechangelog | grep '^Version: ' | sed -e 's/^Version: //' | sed -e 's/\-.*$$//')
 
 sdist-orig:
 	python setup.py sdist
-	mv -v dist/lavapdu-$(VERSION)*.tar.gz ../lavapdu_$(VERSION).orig.tar.gz
+	mv -v dist/pdudaemon-$(VERSION)*.tar.gz ../pdudaemon_$(VERSION).orig.tar.gz
 	$(RM) -r versiontools-*.egg/

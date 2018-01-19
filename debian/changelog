@@ -1,3 +1,9 @@
+pdudaemon (0.0.6-1) unstable; urgency=medium
+
+  * Renamed to pdudaemon
+
+ -- Matt Hart <matt@mattface.org>  Fri, 19 Jan 2018 11:30:03 +0000
+
 lavapdu (0.0.5-2) unstable; urgency=medium
 
   * Add Senthil Kumaran S (stylesen) as an uploader.

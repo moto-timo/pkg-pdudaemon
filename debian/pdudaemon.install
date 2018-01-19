@@ -1,0 +1,3 @@
+debian/pdudaemon/usr/bin/pdudaemon ./usr/sbin/
+./etc/pdudaemon/pdudaemon.conf ./etc/pdudaemon/
+debian/pdudaemon/systemd/pdudaemon.service ./lib/systemd/system

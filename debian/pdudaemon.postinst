@@ -28,14 +28,8 @@ install_database()
 }
 
 
-if [ -x "/etc/init.d/lavapdu-listen" ]; then
-    update-rc.d lavapdu-listen defaults >/dev/null
-    invoke-rc.d lavapdu-listen start || exit $?
-fi
-
-if [ -x "/etc/init.d/lavapdu-runner" ]; then
-    update-rc.d lavapdu-runner defaults >/dev/null
-    invoke-rc.d lavapdu-runner start || exit $?
+if [ -x "/lib/systemd/system/pdudaemon.service" ]; then
+    service pdudaemon start || exit $?
 fi
 
 case "$1" in

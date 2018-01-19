@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+if [ -x "/lib/systemd/system/pdudaemon.service" ]; then
+	service pdudaemon stop || exit $?
+fi
+
+#DEBHELPER#
+
