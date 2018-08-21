@@ -1,3 +1,26 @@
+pdudaemon (0.0.6-2) unstable; urgency=medium
+
+  [Matt Hart]
+  * Add systemd-dev files for building pip package
+  * Add ubuntu systemd dev packages
+  * Update README.md
+
+  [Sjoerd Simons]
+  * Fix custom delay with tcp listener
+  * Teach pduclient about the http protocol
+  * Use systemds own python bindings
+  * Use docker in travis-ci
+  * Add YKUSH XS driver
+
+  [Tim Orling]
+  * Add Ubiquiti mPower Pro (8 Port) support
+  * drivers/ubiquity.py: fix code style errors
+  - prepare for new upstream release
+  - debian stretch python3 only packaging
+  - remove terceiro as uploader (at request GH PR#2)
+  
+ -- Tim Orling <ticotimo@gmail.com>  Fri, 24 Aug 2018 03:53:04 +0000
+
 pdudaemon (0.0.6-1) unstable; urgency=medium
 
   * Renamed to pdudaemon
