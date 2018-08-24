@@ -1,3 +1,9 @@
+pdudaemon (0.0.6-3) unstable; urgency=medium
+
+  * Changes for buster
+
+ -- Tim Orling <ticotimo@gmail.com>  Fri, 24 Aug 2018 03:53:04 +0000
+
 pdudaemon (0.0.6-2) unstable; urgency=medium
 
   [Matt Hart]
