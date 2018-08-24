@@ -1,11 +1,16 @@
-sudo: required
-language: generic
+notifications:
+    irc: "chat.freenode.net#pdudaemon"
+    on_success: always
+    on_failure: always
+    use_notice: false
+    skip_join: false
 
 services:
-  - docker
+    - docker
+
+before_install:
+    - tar -c requirements.txt share/Dockerfile.travis | docker build -t pdudaemon -f share/Dockerfile.travis -
 
 script:
-  - wget -O- http://travis.debian.net/script.sh | sh -
-
-if:
-  tag IS blank
+    - docker run -v $(pwd):/p -w /p pdudaemon pycodestyle --ignore=E501 .
+    - docker run -v $(pwd):/p -w /p pdudaemon sh -c "python3 ./setup.py install && ./share/pdudaemon-test.sh"
