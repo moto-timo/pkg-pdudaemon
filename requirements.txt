@@ -1,0 +1,7 @@
+pexpect
+requests
+systemd_python
+paramiko
+pyserial
+setuptools
+hidapi
