@@ -1,6 +1,4 @@
 # Compulsory line, this is a version 3 file
 version=3
-
-# http://releases.linaro.org/latest/components/lava/lavapdu_(.*).tar.gz
-
+opts=filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%pdudaemon-$1.tar.gz% \
 http://github.com/pdudaemon/pdudaemon/tags  .*/v?(\d\S+)\.tar\.gz
