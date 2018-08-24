@@ -1,6 +1,17 @@
-pdudaemon (0.0.6-1) unstable; urgency=medium
+pdudaemon (0.0.6-1) UNRELEASED; urgency=medium
 
+  [ Matt Hart ]
   * Renamed to pdudaemon
+
+  [ Sjoerd Simons ]
+  * Drop "old" uploaders from lava-pdudaemon apart from Matt
+  * Run depends through wrap-and-sort
+  * Update build-dependencies
+  * Update standards-version to 4.2.0
+  * Improve descriptions of the packages
+  * Simplify install files
+  * Drop postinst/preinst scripts, as opposed to lavapdu pdudaemon doesn't
+    need a postgres database
 
  -- Matt Hart <matt@mattface.org>  Fri, 19 Jan 2018 11:30:03 +0000
 

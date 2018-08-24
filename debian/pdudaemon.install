@@ -1,3 +1,4 @@
-debian/pdudaemon/usr/bin/pdudaemon ./usr/sbin/
-./share/pdudaemon.conf ./etc/pdudaemon/
-./share/pdudaemon.service ./lib/systemd/system/
+usr/sbin/pdudaemon
+usr/lib
+share/pdudaemon.conf etc/pdudaemon/
+share/pdudaemon.service lib/systemd/system/
