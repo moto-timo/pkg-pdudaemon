@@ -1,4 +1,4 @@
-pdudaemon (0.0.6-1) UNRELEASED; urgency=medium
+pdudaemon (0.0.7-1) UNRELEASED; urgency=medium
 
   [ Matt Hart ]
   * Renamed to pdudaemon
@@ -12,6 +12,7 @@ pdudaemon (0.0.6-1) UNRELEASED; urgency=medium
   * Simplify install files
   * Drop postinst/preinst scripts, as opposed to lavapdu pdudaemon doesn't
     need a postgres database
+  * New upstream release (0.0.7)
 
  -- Matt Hart <matt@mattface.org>  Fri, 19 Jan 2018 11:30:03 +0000
 
