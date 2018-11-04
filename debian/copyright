@@ -5,14 +5,81 @@ Source: https://github.com/pdudaemon/pdudaemon.git
 Files: *
 Copyright: 2018 Matthew Hart <matt@mattface.org>
            2010-2013, Linaro Limited
-License: GPL-2.0+
+License: GPL-2+
+
+Files: pdudaemon/__init__.py
+Copyright: 2018 Remi Duraffort <remi.duraffort@linaro.org>
+           2018 Matthew Hart <matt@mattface.org>
+License: GPL-2+
+
+Files: pdudaemon/drivers/acme*.py
+Copyright: 2015 BayLibre SAS
+           2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/apc7921.py
+       pdudaemon/httplistener.py
+Copyright: 2017 Matt Hart <matt@mattface.org>
+License: GPL-2+
+
+Files: pdudaemon/drivers/apc7932.py
+Copyright: 2016 EfficiOS
+License: GPL-2+
+
+Files: pdudaemon/pdurunner.py
+       pdudaemon/tcplistener.py
+       pdudaemon/drivers/apc7952.py
+       pdudaemon/drivers/apc8959.py
+       pdudaemon/drivers/apc9210.py
+       pdudaemon/drivers/apc9218.py
+       pdudaemon/drivers/apcbase.py
+Copyright: 2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/devantech.py
+Copyright: 2016 Quentin Schulz <quentin.schulz@free-electrons.com>
+           2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/devantechusb.py
+       pdudaemon/drivers/egpms.py
+       pdudaemon/drivers/ykush.py
+Copyright: 2017 Sjoerd Simons <sjoerd.simons@collabora.co.uk>
+           2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/driver.py
+       pdudaemon/drivers/localbase.py
+       pdudaemon/drivers/localcmdline.py
+       pdudaemon/drivers/strategies.py
+Copyright: 2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/ip9258.py
+Copyright: 2016 BayLibre, Inc.
+License: GPL-2+
+
+Files: pdudaemon/drivers/sainsmart.py
+Copyright: 2016 BayLibre, Inc.
+           2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/synaccess.py
+Copyright: 2016 Broadcom
+           2013 Linaro Limited
+License: GPL-2+
+
+Files: pdudaemon/drivers/ubiquity.py
+Copyright: 2015 Alexander Couzens <lynxis@fe80.eu>
+License: GPL-2+
 
 Files: debian/*
-Copyright: 2018 Matthew Hart <matt@mattface.org>
+Copyright: 2018 Sjoerd Simons <sjoerd@debian.org>
+           2018 Matthew Hart <matt@mattface.org>
            2013 Neil Williams <codehelp@debian.org>
-License: GPL-2.0+
+License: GPL-2+
 
-License: GPL-2.0+
+License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
