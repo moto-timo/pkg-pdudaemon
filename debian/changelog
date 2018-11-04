@@ -1,4 +1,4 @@
-pdudaemon (0.0.7-1) UNRELEASED; urgency=medium
+pdudaemon (0.0.7-1) unstable; urgency=medium
 
   [ Matt Hart ]
   * Renamed to pdudaemon
@@ -14,7 +14,7 @@ pdudaemon (0.0.7-1) UNRELEASED; urgency=medium
     need a postgres database
   * New upstream release (0.0.7)
 
- -- Matt Hart <matt@mattface.org>  Fri, 19 Jan 2018 11:30:03 +0000
+ -- Sjoerd Simons <sjoerd@debian.org>  Sun, 04 Nov 2018 22:02:54 +0100
 
 lavapdu (0.0.5-2) unstable; urgency=medium
 
