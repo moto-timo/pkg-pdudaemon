@@ -1,9 +1,9 @@
-pdudaemon (0.0.7-2) UNRELEASED; urgency=medium
+pdudaemon (0.0.7-2) unstable; urgency=medium
 
   * Add conflict on lavapdu-client which contains the same binary
     (Closes: #914803)
 
- -- Sjoerd Simons <sjoerd@debian.org>  Sun, 03 Feb 2019 22:38:15 +0100
+ -- Sjoerd Simons <sjoerd@debian.org>  Sun, 03 Feb 2019 22:59:32 +0100
 
 pdudaemon (0.0.7-1) unstable; urgency=medium
 
