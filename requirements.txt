@@ -5,3 +5,6 @@ paramiko
 pyserial
 setuptools
 hidapi
+pysnmp
+pyasn1
+pyusb

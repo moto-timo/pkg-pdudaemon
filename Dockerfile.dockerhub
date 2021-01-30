@@ -1,18 +1,26 @@
-FROM debian:stretch
+FROM debian:buster
 
-RUN apt-get update && apt-get install -y pep8 \
-python3-setuptools \
-python3-pip \
-libsystemd-dev \
+ARG HTTP_PROXY
+ENV http_proxy ${HTTP_PROXY}
+ENV https_proxy ${HTTP_PROXY}
+
+RUN apt-get update && apt-get install -y \
 curl \
-psmisc \
-pkg-config \
+cython3 \
 libffi-dev \
 libhidapi-dev \
+libsystemd-dev \
 libudev-dev \
 libusb-1.0-0-dev \
-cython3 \
-supervisor
+pkg-config \
+psmisc \
+python3-pip \
+python3-setuptools \
+python3-usb \
+python3-wheel \
+supervisor \
+telnet \
+snmp
 
 ADD share/pdudaemon.conf /config/
 WORKDIR /pdudaemon

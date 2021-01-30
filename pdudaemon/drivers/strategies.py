@@ -41,3 +41,6 @@ from pdudaemon.drivers.devantechusb import DevantechUSB8
 from pdudaemon.drivers.synaccess import SynNetBooter
 from pdudaemon.drivers.egpms import EgPMS
 from pdudaemon.drivers.ykush import YkushXS
+from pdudaemon.drivers.ykush import Ykush
+from pdudaemon.drivers.snmp import SNMP
+from pdudaemon.drivers.energenieusb import EnerGenieUSB
