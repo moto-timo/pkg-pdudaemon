@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 
-#  Copyright 2018 Sjoerd Simons <sjoerd.simons@collabora.co.uk>
-#                 Stefan Kempe <stefan.kempe@de.bosch.com>
+#  Copyright 2019 Stefan Wiehler <stefan.wiehler@missinglinkelectronics.com>
 #
 #  Based on PDUDriver:
 #     Copyright 2013 Linaro Limited
 #     Author Matt Hart <matthew.hart@linaro.org>
+#
+#  Protocol documentation available at:
+#  https://tasmota.github.io/docs/#/Commands
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -23,61 +25,51 @@
 #  MA 02110-1301, USA.
 
 import logging
-from pdudaemon.drivers.driver import PDUDriver
-import hid
+from pdudaemon.drivers.driver import PDUDriver, FailedRequestException
+import requests
 import os
-
 log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
 
-YKUSH_VID = 0x04d8
-YKUSH_PID = 0xf2f7
-YKUSH_XS_PID = 0xf0cd
 
-
-class YkushBase(PDUDriver):
-    connection = None
-    ykush_pid = None
-    port_count = 0
-
+class TasmotaBase(PDUDriver):
     def __init__(self, hostname, settings):
         self.hostname = hostname
-        self.settings = settings
-        self.serial = settings.get("serial", u"")
-        log.debug("serial: %s" % self.serial)
-
+        self.username = settings.get("username")
+        self.password = settings.get("password")
         super().__init__()
 
     def port_interaction(self, command, port_number):
-        port_number = int(port_number)
         if port_number > self.port_count or port_number < 1:
-            err = "Port should be in the range 1 - %d" % (self.port_count)
+            err = "Port number must be in range 1 - {}".format(self.port_count)
             log.error(err)
-            raise RuntimeError(err)
+            raise FailedRequestException(err)
 
-        if command == "on":
-            byte = 0x10 + port_number
-        elif command == "off":
-            byte = 0x00 + port_number
-        else:
-            log.error("Unknown command %s." % (command))
-            return
+        params = {
+            "cmnd": "Power{} {}".format(port_number, command),
+            "user": self.username,
+            "password": self.password
+        }
+        url = "http://{}/cm".format(self.hostname)
+        log.debug("HTTP GET: {}".format(url))
+        r = requests.get(url, params)
 
-        d = hid.device()
-        d.open(YKUSH_VID, self.ykush_pid, serial_number=self.serial)
-        d.write([byte, byte])
-        d.read(64)
-        d.close()
+        r.raise_for_status()
+        res = r.json()
+        if res != {'POWER': command.upper()}:
+            log.error(res)
+            raise FailedRequestException(res)
+        log.debug('HTTP response: {}'.format(res))
 
     @classmethod
     def accepts(cls, drivername):
-        return drivername == cls.__name__.upper()
+        return False
 
 
-class YkushXS(YkushBase):
-    ykush_pid = YKUSH_XS_PID
+class SonoffS20Tasmota(TasmotaBase):
     port_count = 1
 
-
-class Ykush(YkushBase):
-    ykush_pid = YKUSH_PID
-    port_count = 3
+    @classmethod
+    def accepts(cls, drivername):
+        if drivername == "sonoff_s20_tasmota":
+            return True
+        return False

@@ -19,11 +19,17 @@
 #  MA 02110-1301, USA.
 
 from pdudaemon.drivers.acme import ACME  # pylint: disable=W0611
+from pdudaemon.drivers.anelnetpwrctrl import AnelNETPwrCtrlHOME  # pylint: disable=W0611
+from pdudaemon.drivers.anelnetpwrctrl import AnelNETPwrCtrlADV  # pylint: disable=W0611
+from pdudaemon.drivers.anelnetpwrctrl import AnelNETPwrCtrlIO  # pylint: disable=W0611
+from pdudaemon.drivers.anelnetpwrctrl import AnelNETPwrCtrlPRO  # pylint: disable=W0611
+from pdudaemon.drivers.apc7900 import APC7900  # pylint: disable=W0611
 from pdudaemon.drivers.apc7932 import APC7932  # pylint: disable=W0611
 from pdudaemon.drivers.apc7952 import APC7952  # pylint: disable=W0611
 from pdudaemon.drivers.apc9218 import APC9218  # pylint: disable=W0611
 from pdudaemon.drivers.apc8959 import APC8959  # pylint: disable=W0611
 from pdudaemon.drivers.apc9210 import APC9210  # pylint: disable=W0611
+from pdudaemon.drivers.apc7920 import APC7920  # pylint: disable=W0611
 from pdudaemon.drivers.apc7921 import APC7921  # pylint: disable=W0611
 from pdudaemon.drivers.ubiquity import Ubiquity3Port  # pylint: disable=W0611
 from pdudaemon.drivers.ubiquity import Ubiquity6Port  # pylint: disable=W0611
@@ -36,11 +42,23 @@ from pdudaemon.drivers.devantech import DevantechETH0621
 from pdudaemon.drivers.devantech import DevantechETH484
 from pdudaemon.drivers.devantech import DevantechETH008
 from pdudaemon.drivers.devantech import DevantechETH8020
+from pdudaemon.drivers.devantech import DevantechDS2824
 from pdudaemon.drivers.devantechusb import DevantechUSB2
 from pdudaemon.drivers.devantechusb import DevantechUSB8
+from pdudaemon.drivers.numatousb import NumatoUSB1
+from pdudaemon.drivers.numatousb import NumatoUSB2
+from pdudaemon.drivers.numatousb import NumatoUSB4
+from pdudaemon.drivers.numatousb import NumatoUSB8
+from pdudaemon.drivers.numatousb import NumatoUSB16
+from pdudaemon.drivers.numatousb import NumatoUSB32
+from pdudaemon.drivers.numatousb import NumatoUSB64
+from pdudaemon.drivers.servertechpro2 import ServerTechPro2  # pylint: disable=W0611
 from pdudaemon.drivers.synaccess import SynNetBooter
+from pdudaemon.drivers.tasmota import SonoffS20Tasmota  # pylint: disable=W0611
 from pdudaemon.drivers.egpms import EgPMS
 from pdudaemon.drivers.ykush import YkushXS
 from pdudaemon.drivers.ykush import Ykush
 from pdudaemon.drivers.snmp import SNMP
 from pdudaemon.drivers.energenieusb import EnerGenieUSB
+from pdudaemon.drivers.bcu import BCU
+from pdudaemon.drivers.vusbhid import VUSBHID

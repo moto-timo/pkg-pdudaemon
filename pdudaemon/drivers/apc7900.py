@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
-#  Copyright 2013 Linaro Limited
-#  Author Matt Hart <matthew.hart@linaro.org>
+#  Copyright 2017 Matt Hart <matt@mattface.org>
+#  Copyright 2020 Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -24,11 +24,11 @@ import os
 log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
 
 
-class APC9210(APC7952):
+class APC7900(APC7952):
 
     @classmethod
     def accepts(cls, drivername):
-        if drivername == "apc9210":
+        if drivername == "apc7900":
             return True
         return False
 
@@ -36,26 +36,25 @@ class APC9210(APC7952):
         # make sure in main menu here
         self._back_to_main()
         self.connection.send("\r")
-        self.connection.expect("1- Outlet Manager")
+        self.connection.expect("1- Device Manager")
         self.connection.expect("> ")
-        log.debug("Entering Outlet Manager")
+        log.debug("Entering Device Manager")
         self.connection.send("1\r")
-        self.connection.expect("------- Outlet Manager")
-        log.debug("Got to Device Manager")
+        self.connection.expect("------- Device Manager")
+        self.connection.send("3\r")
+        self.connection.expect("3- Outlet Control/Configuration")
+        self.connection.expect("> ")
         self._enter_outlet(port_number, False)
-        self.connection.expect(["1- Control of Outlet",
-                                "1- Outlet Control/Configuration"])
-        self.connection.expect("> ")
+        self.connection.expect("1- Control Outlet")
         self.connection.send("1\r")
-        self.connection.expect("Turn Outlet On")
         self.connection.expect("> ")
         if command == "on":
             self.connection.send("1\r")
-            self.connection.expect("Turn Outlet On")
+            self.connection.expect("Immediate On")
             self._do_it()
         elif command == "off":
             self.connection.send("2\r")
-            self.connection.expect("Turn Outlet Off")
+            self.connection.expect("Immediate Off")
             self._do_it()
         else:
             log.debug("Unknown command!")

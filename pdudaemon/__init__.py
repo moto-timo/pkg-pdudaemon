@@ -49,7 +49,7 @@ logging_FILE = "/var/log/pdudaemon.log"
 logger = logging.getLogger('pdud')
 
 
-def setup_logging(options):
+def setup_logging(options, settings):
     logger = logging.getLogger("pdud")
     """
     Setup the log handler and the log level
@@ -66,7 +66,11 @@ def setup_logging(options):
         handler.setFormatter(logging.Formatter(logging_FORMAT))
 
     logger.addHandler(handler)
-    options.loglevel = options.loglevel.upper()
+    settings_level = settings.get('daemon', {}).get('logging_level', None)
+    if settings_level:
+        options.loglevel = settings_level.upper()
+    else:
+        options.loglevel = options.loglevel.upper()
     if options.loglevel == "DEBUG":
         logger.setLevel(logging.DEBUG)
     elif options.loglevel == "INFO":
@@ -82,7 +86,7 @@ class TasksDB(object):
         self.conn = sqlite3.connect(dbname)
         self.conn.row_factory = sqlite3.Row
         self.conn.execute("CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                          "hostname TEXT, port INTEGER, request TEXT, exectime INTEGER)")
+                          "hostname TEXT, port TEXT, request TEXT, exectime INTEGER)")
         self.conn.commit()
 
     def create(self, hostname, port, request, exectime):
@@ -129,13 +133,10 @@ def main():
     drive.add_argument("--drive", action="store_true", default=False)
     drive.add_argument("--request", dest="driverequest", action="store", type=str)
     drive.add_argument("--retries", dest="driveretries", action="store", type=int, default=5)
-    drive.add_argument("--port", dest="driveport", action="store", type=int)
+    drive.add_argument("--port", dest="driveport", action="store", type=str)
 
     # Parse the command line
     options = parser.parse_args()
-
-    # Setup logging
-    setup_logging(options)
 
     # Read the configuration file
     try:
@@ -144,6 +145,9 @@ def main():
         logging.error("Unable to read configuration file '%s': %s", options.conf.name, exc)
         return 1
     dbfile = options.dbfile if options.dbfile else settings['daemon']['dbname']
+
+    # Setup logging
+    setup_logging(options, settings)
 
     if options.drive:
         # Driving a PDU directly, dont start any Listeners

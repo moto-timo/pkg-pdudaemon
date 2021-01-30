@@ -56,6 +56,7 @@ class DevantechBase(PDUDriver):
 
     def port_interaction(self, command, port_number):
         self.connect()
+        port_number = int(port_number)
         if port_number > self.port_count:
             log.error("There are only %d ports. Provide a port number lesser than %d." % (self.port_count, self.port_count))
             raise RuntimeError("There are only %d ports. Provide a port number lesser than %d." % (self.port_count, self.port_count))
@@ -151,5 +152,66 @@ class DevantechETH8020(DevantechBase):
     @classmethod
     def accepts(cls, drivername):
         if drivername == "devantech_eth8020":
+            return True
+        return False
+
+
+class DevantechDSBase(PDUDriver):
+    port_count = 0
+    connection = None
+
+    def __init__(self, hostname, settings):
+        self.hostname = hostname
+        self.settings = settings
+        # the default hostname may vary. I.e. could be "ds378" for other modules.
+        self.ip = settings.get("ip", "dS2824")
+        self.port = settings.get("port", 17123)
+        super().__init__()
+
+    def connect(self):
+        self.connection = socket.create_connection((self.ip, self.port))
+
+    def port_interaction(self, command, port_number):
+        self.connect()
+        port_number = int(port_number)
+        if port_number > self.port_count:
+            log.error("There are only %d ports. Provide a port number lesser than %d." % (self.port_count, self.port_count))
+            raise RuntimeError("There are only %d ports. Provide a port number lesser than %d." % (self.port_count, self.port_count))
+
+        msg = 'SR {} '.format(port_number)
+        if command in ["on", "off"]:
+            msg += command
+        else:
+            log.error("Unknown command %s." % (command))
+            return
+        log.debug("Attempting control: %s port: %d hostname: %s." % (command, port_number, self.hostname))
+        ret = self.connection.sendall(msg.encode('ascii'))
+        if ret:
+            log.error("Failed to send message.")
+            raise RuntimeError("Failed to send message.")
+
+    def _close_connection(self):
+        # Logout
+        log.debug("Closing connection.")
+        self.connection.close()
+
+    def _cleanup(self):
+        self._close_connection()
+
+    def _bombout(self):
+        self._close_connection()
+
+    @classmethod
+    def accepts(cls, drivername):
+        return False
+
+
+class DevantechDS2824(DevantechDSBase):
+    port_count = 8
+
+    @classmethod
+    def accepts(cls, drivername):
+        # Some dS2824 modules apparently report themselves as `Module Type: dS378`
+        if drivername in ["devantech_ds378", "devantech_ds2824"]:
             return True
         return False
