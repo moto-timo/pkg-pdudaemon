@@ -1,4 +1,5 @@
-# Compulsory line, this is a version 3 file
-version=3
-opts=filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%pdudaemon-$1.tar.gz% \
-http://github.com/pdudaemon/pdudaemon/tags  .*/v?(\d\S+)\.tar\.gz
+# Compulsory line, this is a version 4 file
+version=4
+opts="mode=git, gitmode=full, pretty=describe" \
+http://github.com/pdudaemon/pdudaemon \
+HEAD debian
