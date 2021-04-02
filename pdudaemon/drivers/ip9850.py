@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
+#
 #  Copyright 2019 Stefan Wiehler <stefan.wiehler@missinglinkelectronics.com>
 #
 #  Based on PDUDriver:
 #     Copyright 2013 Linaro Limited
 #     Author Matt Hart <matthew.hart@linaro.org>
-#
-#  Protocol documentation available at:
-#  https://tasmota.github.io/docs/#/Commands
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -31,7 +29,9 @@ import os
 log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
 
 
-class TasmotaBase(PDUDriver):
+class ip9850(PDUDriver):
+    port_count = 4
+
     def __init__(self, hostname, settings):
         self.hostname = hostname
         self.username = settings.get("username")
@@ -39,38 +39,37 @@ class TasmotaBase(PDUDriver):
         super().__init__()
 
     def port_interaction(self, command, port_number):
+        port_number = int(port_number)
         if port_number > self.port_count or port_number < 1:
             err = "Port number must be in range 1 - {}".format(self.port_count)
             log.error(err)
             raise FailedRequestException(err)
+        if command == "on":
+            pwr = "1"
+        elif command == "off":
+            pwr = "0"
+        else:
+            log.error("Unknown command %s." % (command))
+            return
 
         params = {
-            "cmnd": "Power{} {}".format(port_number, command),
             "user": self.username,
-            "password": self.password
+            "pass": self.password,
+            "cmd": "setpower",
+            "p6{}".format(port_number): "{}".format(pwr)
         }
-        url = "http://{}/cm".format(self.hostname)
+        url = "http://{}/set.cmd".format(self.hostname)
         log.debug("HTTP GET: {}".format(url))
         r = requests.get(url, params)
 
         r.raise_for_status()
-        res = r.json()
-        if (res != {'POWER': command.upper()}
-                and res != {'POWER' + str(port_number): command.upper()}):
-            log.error(res)
-            raise FailedRequestException(res)
-        log.debug('HTTP response: {}'.format(res))
+        if r.text.find("401") != -1:
+            log.error(r.text)
+            raise FailedRequestException(r.text)
+        log.debug('HTTP response: {}'.format(r.text))
 
     @classmethod
     def accepts(cls, drivername):
-        return False
-
-
-class SonoffS20Tasmota(TasmotaBase):
-    port_count = 1
-
-    @classmethod
-    def accepts(cls, drivername):
-        if drivername == "sonoff_s20_tasmota":
+        if drivername == "ip9850":
             return True
         return False
