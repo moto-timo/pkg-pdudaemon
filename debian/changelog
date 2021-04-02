@@ -1,3 +1,10 @@
+pdudaemon (0.0.8.30.g74aba7c-1) experimental; urgency=medium
+
+  * Branch for experimental
+  * New upstream version 0.0.8.30.g74aba7c
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Fri, 02 Apr 2021 14:49:22 +0200
+
 pdudaemon (0.0.8.24.gc43c5d8-1) unstable; urgency=medium
 
   [ Debian Janitor ]
