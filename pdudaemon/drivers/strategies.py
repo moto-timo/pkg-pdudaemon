@@ -31,6 +31,7 @@ from pdudaemon.drivers.apc8959 import APC8959  # pylint: disable=W0611
 from pdudaemon.drivers.apc9210 import APC9210  # pylint: disable=W0611
 from pdudaemon.drivers.apc7920 import APC7920  # pylint: disable=W0611
 from pdudaemon.drivers.apc7921 import APC7921  # pylint: disable=W0611
+from pdudaemon.drivers.cleware import ClewareUsbSwitch4
 from pdudaemon.drivers.ubiquity import Ubiquity3Port  # pylint: disable=W0611
 from pdudaemon.drivers.ubiquity import Ubiquity6Port  # pylint: disable=W0611
 from pdudaemon.drivers.ubiquity import Ubiquity8Port  # pylint: disable=W0611
@@ -55,6 +56,7 @@ from pdudaemon.drivers.numatousb import NumatoUSB64
 from pdudaemon.drivers.servertechpro2 import ServerTechPro2  # pylint: disable=W0611
 from pdudaemon.drivers.synaccess import SynNetBooter
 from pdudaemon.drivers.tasmota import SonoffS20Tasmota  # pylint: disable=W0611
+from pdudaemon.drivers.tasmota import BrennenstuhlWSPL01Tasmota  # pylint: disable=W0611
 from pdudaemon.drivers.egpms import EgPMS
 from pdudaemon.drivers.ykush import YkushXS
 from pdudaemon.drivers.ykush import Ykush
@@ -64,3 +66,4 @@ from pdudaemon.drivers.bcu import BCU
 from pdudaemon.drivers.vusbhid import VUSBHID
 from pdudaemon.drivers.tplink import TPLink
 from pdudaemon.drivers.ip9850 import ip9850
+from pdudaemon.drivers.intellinet import Intellinet

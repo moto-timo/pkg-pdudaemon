@@ -17,6 +17,11 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
+#
+#  Confirmed devices
+#    - KP303: https://www.tp-link.com/uk/home-networking/smart-plug/kp303/
+#    - KP105: https://www.tp-link.com/uk/home-networking/smart-plug/kp105/
+#    - HS105: https://www.tp-link.com/us/home-networking/smart-plug/hs105/
 
 import logging
 import json
@@ -83,7 +88,7 @@ class TPLink(PDUDriver):
             data = sock_tcp.recv(2048)
             sock_tcp.close()
             decrypted = self.decrypt(data[4:])
-            return(decrypted)
+            return (decrypted)
         except socket.error:
             log.error(f"Could not connect to host {self.hostname}:9999")
 
@@ -91,8 +96,8 @@ class TPLink(PDUDriver):
         for child in self.childinfo:
             child_port = (int(child['alias'].split("_")[-1]) + 1)
             if int(port_number) == int(child_port):
-                return({"child_ids": [child["id"]]})
-        return({})
+                return ({"child_ids": [child["id"]]})
+        return ({})
 
     def port_interaction(self, command, port_number):
         state = 0
@@ -101,7 +106,7 @@ class TPLink(PDUDriver):
             state = 1
         if self.childinfo:
             if int(port_number) > len(self.childinfo):
-                return(False)
+                return (False)
             context = self.get_context(port_number)
         datadict = {
             'context': context,
