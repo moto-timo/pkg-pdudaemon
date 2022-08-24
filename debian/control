@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Matt Hart <matt@mattface.org>
 Uploaders: Matt Hart <matt@mattface.com>,
            Sjoerd Simons <sjoerd@debian.org>
-Build-Depends: debhelper (>= 10.0.0),
+Build-Depends: debhelper-compat (= 13),
                dh-python,
                docbook-xml,
                docbook-xsl,
