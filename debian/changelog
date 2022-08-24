@@ -1,3 +1,10 @@
+pdudaemon (0.0.8.50.g9f3f0cb-1) UNRELEASED; urgency=medium
+
+  * Merge back to main branch
+  * New upstream version 0.0.8.50.g9f3f0cb
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Wed, 24 Aug 2022 20:37:47 +0200
+
 pdudaemon (0.0.8.30.g74aba7c-1) experimental; urgency=medium
 
   * Branch for experimental
