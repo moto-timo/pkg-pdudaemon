@@ -1,3 +1,9 @@
+pdudaemon (0.0.8.58.g597052b-1) unstable; urgency=medium
+
+  * New upstream version 0.0.8.58.g597052b
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sun, 11 Dec 2022 15:53:46 +0100
+
 pdudaemon (0.0.8.50.g9f3f0cb-1) unstable; urgency=medium
 
   * New upstream version 0.0.8.50.g9f3f0cb
