@@ -9,9 +9,6 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/docbook-xsl/manpages/docbook.xsl
-XP     = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
-
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
@@ -22,10 +19,8 @@ export PYBUILD_INSTALL_ARGS=--install-script /usr/sbin
 
 override_dh_auto_install:
 	dh_auto_install
-	$(XP) $(DB2MAN) debian/pdudaemon.xml
-	$(XP) $(DB2MAN) debian/pduclient.xml
-	dh_installman -ppdudaemon pdudaemon.8
-	dh_installman -ppdudaemon-client pduclient.1
+	dh_installman -ppdudaemon debian/pdudaemon.8
+	dh_installman -ppdudaemon-client debian/pduclient.1
 
 override_dh_auto_clean:
 	dh_auto_clean

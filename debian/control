@@ -6,8 +6,6 @@ Uploaders: Matt Hart <matt@mattface.com>,
            Sjoerd Simons <sjoerd@debian.org>
 Build-Depends: debhelper-compat (= 13),
                dh-python,
-               docbook-xml,
-               docbook-xsl,
                python3,
                python3-aiohttp,
                python3-all,
@@ -23,8 +21,7 @@ Build-Depends: debhelper-compat (= 13),
                python3-serial-asyncio,
                python3-setuptools,
                python3-systemd,
-               python3-usb,
-               xsltproc
+               python3-usb
 Standards-Version: 4.2.0
 Homepage: http://github.com/pdudaemon
 Vcs-Git: https://github.com/pdudaemon/pkg-pdudaemon.git
