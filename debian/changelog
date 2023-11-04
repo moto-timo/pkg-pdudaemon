@@ -1,3 +1,17 @@
+pdudaemon (0.0.8.81.gaa63a79-1) UNRELEASED; urgency=medium
+
+  [ Andrej Shadura ]
+  * Drop pydist-overrides not relevant for Python 3
+  * Drop http_proxy overrride, done by pybuild automatically
+
+  [ Sjoerd Simons ]
+  * Drop misnamed dh_instalsystemd
+  * update manpages (Closes: #1055219)
+  * New upstream version 0.0.8.81.gaa63a79
+    - Updated dependency list in setup.py: (Closes: #1055220)
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sat, 04 Nov 2023 15:03:54 +0100
+
 pdudaemon (0.0.8.79.gd61cf06-1) unstable; urgency=medium
 
   * New upstream version 0.0.8.79.gd61cf06
