@@ -31,7 +31,7 @@ Package: pdudaemon
 Architecture: all
 Depends: ${misc:Depends},
          ${python3:Depends}
-Recommends: telnet, openssh-client
+Recommends: telnet | telnet-client, openssh-client
 Description: daemon for controlling PDUs
  Pdudaemon provides a standard way of controlling power controllers,
  which can either be local devices or networked PDUs. On top of that it ensures
