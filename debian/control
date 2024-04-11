@@ -2,10 +2,10 @@ Source: pdudaemon
 Section: net
 Priority: optional
 Maintainer: Matt Hart <matt@mattface.org>
-Uploaders: Matt Hart <matt@mattface.com>,
-           Sjoerd Simons <sjoerd@debian.org>
+Uploaders: Matt Hart <matt@mattface.com>, Sjoerd Simons <sjoerd@debian.org>
 Build-Depends: debhelper-compat (= 13),
                dh-python,
+               pybuild-plugin-pyproject,
                python3,
                python3-aiohttp,
                python3-all,
@@ -29,9 +29,8 @@ Vcs-Browser: https://github.com/pdudaemon/pkg-pdudaemon
 
 Package: pdudaemon
 Architecture: all
-Depends: ${misc:Depends},
-         ${python3:Depends}
-Recommends: telnet | telnet-client, openssh-client
+Depends: ${misc:Depends}, ${python3:Depends}
+Recommends: openssh-client, telnet | telnet-client
 Description: daemon for controlling PDUs
  Pdudaemon provides a standard way of controlling power controllers,
  which can either be local devices or networked PDUs. On top of that it ensures

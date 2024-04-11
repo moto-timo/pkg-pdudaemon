@@ -1,7 +1,14 @@
 pdudaemon (0.0.8.109.gaa25f15-1) unstable; urgency=medium
 
   * New upstream version 0.0.8.109.gaa25f15
-  * Fix compatibility with python 3.12 (Closes: #1058396)
+  * Fixes compatibility with python 3.12 (Closes: #1058396)
+  * Run wrap-and-sort
+  * debian/rules: Drop PYBUILD_INSTALL_ARGS, they don't seem to apply when
+    using pyproject
+  * debian/control: Add b-d on pybuild-plugin-pyproject as pdudaemon shifted
+    to pyproject.
+  * debian/pdudaemon.install: Move pdudaemon to usr/sbin to keep consistency
+    with previous versions, rather then relying on the build system to do so
 
  -- Sjoerd Simons <sjoerd@debian.org>  Thu, 11 Apr 2024 20:20:08 +0200
 

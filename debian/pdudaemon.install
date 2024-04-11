@@ -1,4 +1,4 @@
-usr/sbin/pdudaemon
-usr/lib
 share/pdudaemon.conf etc/pdudaemon/
 share/pdudaemon.service lib/systemd/system/
+usr/bin/pdudaemon usr/sbin
+usr/lib
