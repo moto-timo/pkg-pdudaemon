@@ -1,3 +1,9 @@
+pdudaemon (0.0.8.109.gaa25f15-2) unstable; urgency=medium
+
+  * Rebuild for source-only upload
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sat, 13 Apr 2024 08:17:11 +0200
+
 pdudaemon (0.0.8.109.gaa25f15-1) unstable; urgency=medium
 
   * New upstream version 0.0.8.109.gaa25f15
