@@ -1,3 +1,24 @@
+pdudaemon (1.0.0.8.g40c7a57-1) UNRELEASED; urgency=medium
+
+  * New upstream version 1.0.0.8.g40c7a57
+  * Fix debian/rules 'find -name' to 'find -wholename'
+  * TPLink: Don't rely on undocumented user specified port naming for indexing
+  * TPLink: Only send command if device initialised
+  * ci: Drop trixie python 3.12 tests
+  * README.md: The IRC channel is no more
+  * drivers: devantechusb: Extend driver for 4 and 6 relay units
+  * Rework listener.process_request to bubble up errors to caller
+  * Rework pdurunner.do_job to return True on success
+  * Fix some simple logging -> logger errors
+  * Enable tests workflow on tags
+  * Fix default branch name in pypi upload condition
+  * Use actions to publish packages to pypi
+  * Bump docker/build-push-action from 5 to 6
+  * pyproject: limit pysnmp and pyasn1
+  * drivers: Add Home Assistant driver
+
+ -- Tim Orling <tim.orling@konsulko.com>  Mon, 26 May 2025 10:35:43 -0700
+
 pdudaemon (0.0.8.109.gaa25f15-2) unstable; urgency=medium
 
   * Rebuild for source-only upload

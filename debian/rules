@@ -22,6 +22,6 @@ override_dh_auto_install:
 
 override_dh_auto_clean:
 	dh_auto_clean
-	find . -name '__pycache__/*.pyc' -delete
+	find . -wholename '__pycache__/*.pyc' -delete
 	$(RM) -r pdudaemon.egg-info setup.cfg dist/ pdudaemon.8
 	$(RM) -r build/ pduclient.1 debian/pdudeamon
