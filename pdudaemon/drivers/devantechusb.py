@@ -32,7 +32,7 @@ log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
 class DevantechusbBase(PDUDriver):
     connection = None
     port_count = 0
-    supported = []
+    supported = []  # type: list[str]
 
     def __init__(self, hostname, settings):
         self.hostname = hostname
@@ -70,6 +70,18 @@ class DevantechUSB2(DevantechusbBase):
     port_count = 2
     supported = ["devantech_USB-RLY02",
                  "devantech_USB-RLY82"]
+
+
+# 4 relay devices
+class DevantechUSB4(DevantechusbBase):
+    port_count = 4
+    supported = ["devantech_USB-RLY04"]
+
+
+# 6 relay devices
+class DevantechUSB6(DevantechusbBase):
+    port_count = 6
+    supported = ["devantech_USB-RLY06"]
 
 
 # Various 8 relay devices

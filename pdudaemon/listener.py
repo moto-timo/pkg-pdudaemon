@@ -48,7 +48,6 @@ def parse_tcp(data):
 
 def parse_http(data, path):
     args = Args()
-    delay = None
     entry = path.lstrip('/').split('/')
     if len(entry) != 3:
         logger.info("Request path was invalid: %s", entry)
@@ -79,12 +78,12 @@ async def process_request(args, config, daemon):
             args.delay = 0
     if args.alias:
         if args.hostname or args.port:
-            logging.error("Trying to use and alias and also a hostname/port")
+            logger.error("Trying to use and alias and also a hostname/port")
             return False
         # Using alias support, get all pdu info from alias
         alias_settings = (config.get('aliases', {})).get(args.alias, False)
         if not alias_settings:
-            logging.error("Alias requested but not found")
+            logger.error("Alias requested but not found")
             return False
         args.hostname = config["aliases"][args.alias]["hostname"]
         args.port = config["aliases"][args.alias]["port"]
@@ -94,17 +93,16 @@ async def process_request(args, config, daemon):
     if args.hostname not in config['pdus']:
         logger.info("PDU was not found in config")
         return False
-    if not (args.request in ["reboot", "on", "off"]):
+    if args.request not in ["reboot", "on", "off"]:
         logger.info("Unknown request: %s", args.request)
         return False
     runner = daemon.runners[args.hostname]
     if args.request == "reboot":
         logger.debug("reboot requested, submitting off/on")
-        await runner.do_job_async(args.port, "off")
+        if not await runner.do_job_async(args.port, "off"):
+            return False
         await asyncio.sleep(int(args.delay))
-        await runner.do_job_async(args.port, "on")
-        return True
+        return await runner.do_job_async(args.port, "on")
     else:
         await asyncio.sleep(int(args.delay))
-        await runner.do_job_async(args.port, args.request)
-        return True
+        return await runner.do_job_async(args.port, args.request)

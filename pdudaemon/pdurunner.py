@@ -25,8 +25,9 @@ import traceback
 import pexpect
 import concurrent.futures
 from pdudaemon.drivers.driver import PDUDriver
-import pdudaemon.drivers.strategies  # pylint: disable=W0611
+import pdudaemon.drivers.strategies
 
+assert pdudaemon.drivers.strategies, "Subclasses are iterated to find all drivers"
 
 class PDURunner:
 
@@ -52,7 +53,8 @@ class PDURunner:
         retries = self.retries
         while retries > 0:
             try:
-                return self.driver.handle(request, port)
+                self.driver.handle(request, port)
+                return True
             except (OSError, pexpect.exceptions.EOF, Exception):  # pylint: disable=broad-except
                 self.logger.warn(traceback.format_exc())
                 self.logger.warn("Failed to execute job: {} {} (attempts left {})".format(port, request, retries - 1))
