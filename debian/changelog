@@ -1,3 +1,10 @@
+pdudaemon (1.1.0-2) unstable; urgency=medium
+
+  * debian/control: add python3-pytest-asyncio
+  * requires python3-snmp4 7.2.21+ from forky/testing
+
+ -- Tim Orling <tim.orling@konsulko.com>  Wed, 18 Feb 2026 11:07:14 -0800
+
 pdudaemon (1.1.0-1) unstable; urgency=medium
 
   * New upstream version 1.1.0
