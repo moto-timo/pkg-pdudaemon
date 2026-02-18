@@ -1,0 +1,144 @@
+From b91030e52ee33799d0056486c7896793c9b2f3f7 Mon Sep 17 00:00:00 2001
+From: Tim Orling <tim.orling@konsulko.com>
+Date: Sat, 7 Jun 2025 11:24:26 -0700
+Subject: [PATCH 1/2] drivers: add netgearplus driver using py-netgear-plus
+
+Adds support for controlling PoE power on Netgear Plus switches
+
+Signed-off-by: Tim Orling <tim.orling@konsulko.com>
+---
+ pdudaemon/drivers/netgearplus.py | 68 ++++++++++++++++++++++++++++++++
+ pdudaemon/drivers/strategies.py  |  2 +
+ pyproject.toml                   |  1 +
+ share/pdudaemon.conf             |  8 +++-
+ 4 files changed, 78 insertions(+), 1 deletion(-)
+ create mode 100644 pdudaemon/drivers/netgearplus.py
+
+diff --git a/pdudaemon/drivers/netgearplus.py b/pdudaemon/drivers/netgearplus.py
+new file mode 100644
+index 0000000..20c0d91
+--- /dev/null
++++ b/pdudaemon/drivers/netgearplus.py
+@@ -0,0 +1,68 @@
++#!/usr/bin/python3
++#
++#  Copyright 2025 Tim Orling <tim DOT orling AT konsulko DOT com>
++#
++#  This program is free software; you can redistribute it and/or modify
++#  it under the terms of the GNU General Public License as published by
++#  the Free Software Foundation; either version 2 of the License, or
++#  (at your option) any later version.
++#
++#  This program is distributed in the hope that it will be useful,
++#  but WITHOUT ANY WARRANTY; without even the implied warranty of
++#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++#  GNU General Public License for more details.
++#
++#  You should have received a copy of the GNU General Public License
++#  along with this program; if not, write to the Free Software
++#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
++#  MA 02110-1301, USA.
++
++import logging
++import os
++from pdudaemon.drivers.driver import PDUDriver, FailedRequestException
++import py_netgear_plus
++
++log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
++
++
++# The following driver has been tested with the hardware:
++#   Model No          GS305EPP
++#   Firmware Version  v1.0.1.4
++# (Settings > Firmware in the web interface)
++#
++class NetgearPlusSwitch(PDUDriver):
++    def __init__(self, hostname, settings):
++        self.hostname = hostname
++        self.ip = settings.get('ip')
++        self.password = settings.get("password")
++        self.port_count = settings.get('port_count')
++
++        super(NetgearPlusSwitch, self).__init__()
++
++    def port_interaction(self, command, port_number):
++        sw = py_netgear_plus.NetgearSwitchConnector(self.ip, self.password)
++        sw.autodetect_model()
++        log.debug('Netgear switch model: %s' % sw.switch_model.MODEL_NAME)
++        if not sw.get_login_cookie():
++            raise FailedRequestException('Failed to get login cookie')
++        data = sw.get_switch_infos()
++        log.debug('Netgear switch data: %s' % data)
++        if int(port_number) <= int(self.port_count):
++            if command == "on":
++                if sw.turn_on_poe_port(int(port_number)):
++                    log.debug('Successfully turned PoE power on for port %s' % port_number)
++                else:
++                    raise FailedRequestException('Failed to turn PoE power on for port %s' % port_number)
++            elif command == "off":
++                if sw.turn_off_poe_port(int(port_number)):
++                    log.debug('Successfully turned PoE power off for port %s' % port_number)
++                else:
++                    raise FailedRequestException('Failed to turn PoE power off for port %s' % port_number)
++            else:
++                raise FailedRequestException('Unknown command %s' % (command))
++        else:
++            raise FailedRequestException('port_number %s is out of range' % (port_number))
++
++    @classmethod
++    def accepts(cls, drivername):
++        return drivername == "netgearplus"
+diff --git a/pdudaemon/drivers/strategies.py b/pdudaemon/drivers/strategies.py
+index 10552ef..70d0b8b 100644
+--- a/pdudaemon/drivers/strategies.py
++++ b/pdudaemon/drivers/strategies.py
+@@ -81,6 +81,7 @@ from pdudaemon.drivers.cyberpower81001 import Cyberpower81001
+ from pdudaemon.drivers.homeassistant import HomeAssistantHTTP
+ from pdudaemon.drivers.ubus import Ubus
+ from pdudaemon.drivers.shelly_gen2 import ShellyGen2
++from pdudaemon.drivers.netgearplus import NetgearPlusSwitch
+ 
+ __all__ = [
+     ACME.__name__,
+@@ -144,6 +145,7 @@ __all__ = [
+     HomeAssistantHTTP.__name__,
+     Ubus.__name__,
+     ShellyGen2.__name__,
++    NetgearPlusSwitch.__name__,
+ ]
+ 
+ log = logging.getLogger("pdud.drivers." + os.path.basename(__file__))
+diff --git a/pyproject.toml b/pyproject.toml
+index f99b40c..085259d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -35,6 +35,7 @@ dependencies = [
+     "pyasn1>=0.6.2",
+     "pyusb",
+     "pymodbus",
++    "py-netgear-plus",
+ ]
+ dynamic = ["version"] # via setuptools_scm
+ 
+diff --git a/share/pdudaemon.conf b/share/pdudaemon.conf
+index 194cb96..17587cd 100644
+--- a/share/pdudaemon.conf
++++ b/share/pdudaemon.conf
+@@ -164,7 +164,13 @@
+             "port_count": 4,
+             "username": "user",
+             "password": "password"
+-        }
++        },
++        "netgearplus": {
++            "driver": "netgearplus",
++            "ip": "10.0.0.1",
++            "port_count": "4",
++            "password": "password"
++         }
+     },
+     "aliases": {
+         "aliastesthttp01": {
+-- 
+2.47.3
+
