@@ -1,8 +1,8 @@
-pdudaemon (1.0.0.24.g61fdb8e-1) UNRELEASED; urgency=medium
+pdudaemon (1.1.0-1) unstable; urgency=medium
 
-  * New upstream version 1.0.0.24.g61fdb8e
+  * New upstream version 1.1.0
 
- -- Tim Orling <tim.orling@konsulko.com>  Sat, 14 Feb 2026 10:40:47 -0800
+ -- Tim Orling <tim.orling@konsulko.com>  Wed, 18 Feb 2026 10:01:05 -0800
 
 pdudaemon (1.0.0.8.g40c7a57-1) UNRELEASED; urgency=medium
 
